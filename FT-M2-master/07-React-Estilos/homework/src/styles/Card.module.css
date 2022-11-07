@@ -1,0 +1,35 @@
+.btn {
+  background-color: green;
+  width: 25px;
+  border-radius: 10px;
+  margin: 5px;
+  align-self: flex-end;
+  font-size: 10px;
+}
+
+.color {
+  color: black;
+}
+.btn:hover {
+  background-color: whitesmoke;
+  color: blueviolet;
+}
+
+.middleDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  /*   align-content: center; */
+
+  justify-content: center;
+  border: 2px solid grey;
+  border-radius: 11px;
+  height: 250px;
+  background-color: ghostwhite;
+}

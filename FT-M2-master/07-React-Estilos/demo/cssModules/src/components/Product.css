@@ -1,0 +1,11 @@
+.producto h3 {
+  background-color: yellow;
+}
+
+.producto {
+  color: rgb(139, 63, 54);
+}
+
+.tamano {
+  font-size: 50px;
+}

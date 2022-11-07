@@ -1,0 +1,38 @@
+/* @letra: 10px;
+
+.estoEsUnMixin {
+  color: white;
+}
+
+.estoEsOtroMixin() {
+  background: #223344;
+}
+
+p {
+  font-size: letra;
+  .estoEsUnMixin();
+  .estoEsOtroMixin();
+} */
+.home .intro .imagenHeader {
+  border-radius: 18px;
+}
+.mixinColorParrafo {
+  color: gray;
+}
+p {
+  color: gray;
+}
+/* 
+ Crear un mixin que reciba al menos dos parámetros para darle 
+ el estilo correspondiente al botón de `registrate`
+*/
+.mixinBtn2 {
+  padding: 10px;
+}
+.btn {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 10px;
+}

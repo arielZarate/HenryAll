@@ -1,0 +1,49 @@
+// Código de Nav acá
+
+.nav {
+  display: flex;
+
+  flex-direction: column; //afgregada code-review
+  align-items: center; // justify-content: center;
+  background-color: @nav-bg;
+  border: @nav-border solid 2px;
+  margin-top: 0 px;
+  padding: 10px;
+
+  h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  ul {
+    //se lo mando a nav
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+
+    //flex-wrap: nowrap;
+    justify-content: space-around;
+
+    padding-top: 20px;
+    width: 100%;
+
+    li {
+      // float: none;
+      display: flex;
+      padding: 10px;
+      margin: 0 10px;
+
+      a {
+        text-decoration: none;
+        color: black;
+
+        font-size: 15px;
+        // background-color: #dddddd;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 100% auto;
+  }
+}

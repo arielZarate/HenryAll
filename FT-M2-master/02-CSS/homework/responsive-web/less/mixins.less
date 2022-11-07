@@ -1,0 +1,78 @@
+// Mixins acá
+/* @letra: 10px;
+
+.estoEsUnMixin {
+  color: white;
+}
+
+.estoEsOtroMixin() {
+  background: #223344;
+}
+
+p {
+  font-size: letra;
+  .estoEsUnMixin();
+  .estoEsOtroMixin();
+} */
+
+@import "mixins.less";
+@tam: 18px;
+
+/* @media (max-width: 500px) {
+  width: 50%;
+} */
+
+.home {
+  .intro {
+    .imagenHeader {
+      border-radius: @tam;
+      @media (max-width: 500px) {
+        display: flex;
+        flex-wrap: wrap;
+
+        width: 100%;
+      }
+    }
+  }
+}
+
+.mixinColorParrafo {
+  //text-decoration: dashed;
+
+  color: gray;
+}
+
+p {
+  .mixinColorParrafo();
+}
+
+/* 
+ Crear un mixin que reciba al menos dos parámetros para darle 
+ el estilo correspondiente al botón de `registrate`
+*/
+
+.mixinBoton(@bg,@borde,@color,@tam) {
+  background-color: @bg;
+  color: @color;
+  border-radius: @borde;
+  font-size: @tam;
+}
+
+.mixinBtn2 {
+  padding: 10px;
+}
+.btn {
+  display: inline-block;
+
+  .mixinBoton(@bg:gray, @borde:4px, @color:black, @tam:20px);
+  .mixinBtn2();
+
+  /* 
+   & hover{
+     .mixinBoton(@bg:blue,@borde:4px,@color:white,@tam:20px);
+  */
+}
+
+.btn:hover {
+  .mixinBoton(@bg:blue,@borde:4px,@color:white,@tam:20px);
+}

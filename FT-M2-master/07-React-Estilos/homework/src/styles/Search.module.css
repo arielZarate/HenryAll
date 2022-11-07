@@ -1,0 +1,17 @@
+.btn {
+  color: #000;
+  font-size: 18px;
+  background-color: #24b0e1;
+  border-radius: 5px;
+  border: 3px solid rgba(14, 14, 23, 0.279);
+}
+
+.btn:hover {
+  background-color: rgb(40, 40, 182);
+  color: rgb(194, 175, 175);
+}
+
+.entrada {
+  border: 3px solid #24b0e1;
+  width: 200px;
+}

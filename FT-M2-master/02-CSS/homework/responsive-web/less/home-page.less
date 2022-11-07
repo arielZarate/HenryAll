@@ -1,0 +1,117 @@
+// Conteindo del Home
+
+//* Utilizar el archivo `home-page.less` para darle el estilo correspondiente a la imagen del header
+.home {
+  .intro {
+    /*  img {
+      border-radius: 20px;
+    } */
+
+    h2 {
+      padding: 15px;
+    }
+
+    p {
+      padding: 0 15px;
+    }
+  }
+
+  .music-images {
+    display: flex;
+    // flex-wrap: wrap;
+    width: 100%;
+
+    img {
+      width: 28%;
+      margin: 20px 2.5%;
+      border-radius: 20px;
+      height: 100%;
+    }
+
+    /* .tecnologia,
+    .ondas {
+      @media (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      } */
+
+    //.auricular {
+    @media (max-width: 500px) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+
+      width: 200%;
+    }
+
+    /*   .auricular {
+      width: 100%;
+    } */
+    //}
+  }
+}
+
+.musica-nueva {
+  padding: 15px;
+
+  h3 {
+    margin-top: 11px;
+  }
+
+  p {
+    margin-top: 13px;
+  }
+}
+
+//@main-border-color
+.actual {
+  margin-top: 60px;
+  border-top: 1px solid red;
+  padding: 50px 60px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: right;
+    text-align: center;
+
+    //flex-wrap: wrap;
+    //flex-direction: ¡;
+
+    width: 100%;
+  }
+  .actual-text {
+    width: 50%;
+    align-items: center;
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 26px;
+    }
+  }
+
+  .actual-img {
+    width: 46%;
+    margin-left: 4%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 500px) {
+      display: flex;
+      align-items: flex-start;
+      //flex-direction: column-reverse
+      width: 100%;
+      padding: 15px;
+    }
+  }
+}

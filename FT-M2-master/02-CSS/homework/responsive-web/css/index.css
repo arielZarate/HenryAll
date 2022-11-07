@@ -1,0 +1,365 @@
+/* 
+* Crear una variable `@phone` que contenga un media query de `max-width: 500px`. 
+Utilizar dicha variable para todos los estilos anidados para el formato Mobile
+*/
+/* @letra: 10px;
+
+.estoEsUnMixin {
+  color: white;
+}
+
+.estoEsOtroMixin() {
+  background: #223344;
+}
+
+p {
+  font-size: letra;
+  .estoEsUnMixin();
+  .estoEsOtroMixin();
+} */
+/* @media (max-width: 500px) {
+  width: 50%;
+} */
+.home .intro .imagenHeader {
+  border-radius: 18px;
+}
+@media (max-width: 500px) {
+  .home .intro .imagenHeader {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+.mixinColorParrafo {
+  color: gray;
+}
+p {
+  color: gray;
+}
+/* 
+ Crear un mixin que reciba al menos dos parámetros para darle 
+ el estilo correspondiente al botón de `registrate`
+*/
+.mixinBtn2 {
+  padding: 10px;
+}
+.btn {
+  display: inline-block;
+  background-color: gray;
+  color: black;
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 10px;
+  /* 
+   & hover{
+     .mixinBoton(@bg:blue,@borde:4px,@color:white,@tam:20px);
+  */
+}
+.btn:hover {
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+  font-size: 20px;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  font-family: "Ubuntu", sans-serif;
+  color: #5e6164;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Russo One", sans-serif;
+  color: #23293b;
+}
+h2 {
+  font-size: 3.2rem;
+}
+h3 {
+  font-size: 2.8rem;
+}
+p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f6f6f6;
+  border: #f1f1f1 solid 2px;
+  margin-top: 0 px;
+  padding: 10px;
+}
+.nav h1 {
+  text-align: center;
+  font-size: 40px;
+}
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  justify-content: space-around;
+  padding-top: 20px;
+  width: 100%;
+}
+.nav ul li {
+  display: flex;
+  padding: 10px;
+  margin: 0 10px;
+}
+.nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+@media (max-width: 500px) {
+  .nav {
+    width: 100% auto;
+  }
+}
+footer {
+  color: #22283B;
+  background: #f4f4f4;
+  padding: 20px 0;
+  border: 1px double #e0e0e0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .intro {
+  /*  img {
+      border-radius: 20px;
+    } */
+}
+.home .intro h2 {
+  padding: 15px;
+}
+.home .intro p {
+  padding: 0 15px;
+}
+.home .music-images {
+  display: flex;
+  width: 100%;
+  /* .tecnologia,
+    .ondas {
+      @media (max-width: 500px) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      } */
+  /*   .auricular {
+      width: 100%;
+    } */
+}
+.home .music-images img {
+  width: 28%;
+  margin: 20px 2.5%;
+  border-radius: 20px;
+  height: 100%;
+}
+@media (max-width: 500px) {
+  .home .music-images {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 200%;
+  }
+}
+.musica-nueva {
+  padding: 15px;
+}
+.musica-nueva h3 {
+  margin-top: 11px;
+}
+.musica-nueva p {
+  margin-top: 13px;
+}
+.actual {
+  margin-top: 60px;
+  border-top: 1px solid red;
+  padding: 50px 60px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 500px) {
+  .actual {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: right;
+    text-align: center;
+    width: 100%;
+  }
+}
+.actual .actual-text {
+  width: 50%;
+  align-items: center;
+}
+.actual .actual-text h3 {
+  margin-bottom: 10px;
+}
+.actual .actual-text p {
+  margin-bottom: 26px;
+}
+.actual .actual-img {
+  width: 46%;
+  margin-left: 4%;
+}
+.actual .actual-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+@media (max-width: 500px) {
+  .actual .actual-img {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 15px;
+  }
+}
+/* html {
+  background-color: green;
+} */
