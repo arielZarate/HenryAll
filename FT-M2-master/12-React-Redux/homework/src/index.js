@@ -5,6 +5,8 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter } from "react-router-dom";
+
+//ACA CONECTAMOS REACT CON REDUX
 import { Provider } from "react-redux";
 import store from "./store/index";
 

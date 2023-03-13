@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox con bootstrap</title>
+
+
+<style>
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+  .titulo{
+    background-color: black;
+    color:yellowgreen;
+    text-align: center;
+    background-color:rgba(red, green, blue, alpha);
+   
+  }
+
+  .container{
+    margin: auto;
+    max-width: 1280px;
+
+    /* ////////////// */
+  }
+
+  .flex-container{
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .flex-item{
+    /* que no crezca - no reduzca y seal 100% */
+    flex:0 0 100%;
+    border:thin solid gray
+  }
+
+
+   
+  @media(min-width:576px){
+    .flex-item{
+        flex: 0 0 50%;
+    }
+  }
+  @media(min-width:768px){
+    .flex-item{
+        flex: 0 0 33.333333%;
+    }
+  }
+  @media(min-width:992px){
+    .flex-item{
+        flex: 0 0 25%;
+    }
+  }
+  @media(min-width:1200px){
+    .flex-item{
+        flex: 0 0 16.6666%;
+    }
+  }
+
+</style>
+
+ 
+</head>
+<body>
+
+
+    <h1 class="titulo" >Prueba de css con flexbox</h1>
+
+    <div class="">
+   <section class="flex-container">
+    <article class="flex-item">flex 1</article>
+    <article class="flex-item">flex 2</article>
+    <article class="flex-item">flex 3</article>
+    <article class="flex-item">flex 4</article>
+    <article class="flex-item">flex 5</article>
+    <article class="flex-item">flex 6</article>
+    <article class="flex-item">flex 7</article>
+    <article class="flex-item">flex 8</article>
+    <article class="flex-item">flex 9</article>
+    <article class="flex-item">flex 10</article>
+    <article class="flex-item">flex 11</article>
+    <article class="flex-item">flex 12</article>
+    <article class="flex-item">flex 13</article>
+    <article class="flex-item">flex 14</article>
+    <article class="flex-item">flex 15</article>
+    <article class="flex-item">flex 16</article>
+    <article class="flex-item">flex 17</article>
+    <article class="flex-item">flex 18</article>
+    <article class="flex-item">flex 19</article>
+
+   
+   </section>
+   
+      </div>
+
+
+
+
+
+
+</html>

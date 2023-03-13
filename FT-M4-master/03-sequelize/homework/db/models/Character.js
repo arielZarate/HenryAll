@@ -7,20 +7,42 @@ module.exports = (sequelize) => {
       code: {
         type: DataTypes.STRING(5),
         primaryKey: true,
+
+        //permitir null: false
         allowNull: false,
+
+        /* 
+         code: similar al name vamos a hacer que no pueda ser "HENRY" pero
+incluyendo cualquier variación/combinación de mayúsculas y minísculas 
+        */
+
+        validate: {
+          //creo una funcion querecibe y lo verifica
+          isNotHenry(value) {
+            if (value.toLowerCase() === "henry") {
+              throw new Error("is henry ");
+            }
+          },
+        },
       },
       name: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+
+        //Character - name: el valor no puede ser "Henry", "SoyHenry" o "Soy Henry"
+        validate: {
+          notIn: [["Henry", "SoyHenry", "Soy Henry"]],
+        },
       },
+
       age: {
         type: DataTypes.INTEGER,
 
-        //agregados de la parte 2
+        //modifca el usuario cuando devuelve el dato
         get() {
           const value = this.getDataValue("age");
-          return value ? value + "years old" : null;
+          return value ? value + " years old" : null;
         },
       },
       race: {
@@ -32,8 +54,11 @@ module.exports = (sequelize) => {
           "Animal",
           "Other"
         ),
+
+        //por default
         defaultValue: "Other",
       },
+
       hp: {
         type: DataTypes.FLOAT,
         allowNull: false,
@@ -42,61 +67,37 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+
       date_added: {
         type: DataTypes.DATEONLY,
         defaultValue: DataTypes.NOW,
       },
     },
+
     {
       timestamps: false,
     }
   );
 };
 
+/*
+Validations
+Vamos a agregar algunas validaciones a nivel base de datos:
+
+Character - name: el valor no puede ser "Henry", "SoyHenry" o "Soy Henry"
+Character - code: similar al name vamos a hacer que no pueda ser "HENRY" pero
+incluyendo cualquier variación/combinación de mayúsculas y minísculas 
+(Armar un custom validator).
+
+*/
 /* 
-{
-      code: {
-        type: DataTypes.STRING(5),
-        primaryKey: true,
-        allowNull: false,
-      },
-      name: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false, //le dice que es obligatorio
-      },
-      age: {
-        type: DataTypes.INTEGER,
-      },
-      race: {
-        type: DataTypes.ENUM(
-          "Human",
-          "Elf",
-          "Machine",
-          "Demon",
-          "Animal",
-          "Other"
-        ),
-        defaultValue: "other",
-      },
-      hp: {
-        type: DataTypes.FLOAT,
-        allowNull: false, //le dice que es obligatorio
-      },
-      mana: {
-        type: DataTypes.FLOAT,
-        allowNull: false, //le dice que es obligatorio
-      },
-      date_added: {
-        //ess fecha
-        type: DataTypes.DATEONLY,
-        defaultValue: DataTypes.NOW,
-      },
-    },
-    //datos agregados
-    {
-      //datos agregados
-      timestamps: false,
-    }
+code*: string (Máximo 5 caracteres) [PK]
+name*: string (Debe ser único)
+age: integer
+race: enum (Posibles valores: 'Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other')
+hp*: float
+mana*: float
+date_added: timestamp without time
+
 
 */

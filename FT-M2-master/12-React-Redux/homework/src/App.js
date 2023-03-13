@@ -8,12 +8,12 @@ import Movie from "./components/Movie/Movie";
 
 function App() {
   return (
-      <React.Fragment>
-          <NavBar />
-          <Route exact path="/" component={Buscador} />
-          <Route path="/favs" component={Favorites} />
-          <Route path="/movie/:id" component={Movie} />
-      </React.Fragment>
+    <React.Fragment>
+      <NavBar />
+      <Route exact path="/" component={Buscador} />
+      <Route path="/favorites" component={Favorites} />
+      <Route path="/movie/:id" component={Movie} />
+    </React.Fragment>
   );
 }
 

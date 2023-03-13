@@ -7,8 +7,15 @@ module.exports = (sequelize) => {
       unique: true,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-    },
+    description: DataTypes.STRING,
   });
 };
+
+/*
+
+
+Role
+name*: string (Dene ser único)
+description: string
+
+*/

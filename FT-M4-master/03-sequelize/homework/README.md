@@ -11,18 +11,15 @@ Ya se encuentra instalado `sequelize`, `pg` y `pg-hstore` por lo que comenzaremo
 Para realizarlo por consola ingresar a la consola de PostgreSQL con el comando ya visto `psql` y luego ejecutar:
 
 ```sql
- ;
+  CREATE DATABASE henry_sequelize;
 ```
 
 Ahora que ya tenemos creada la base de datos procederemos a conectarla desde nuestro ORM (Sequelize) para poder interactuar con ella. Dentro de la carpeta `db` verán que en el archivo `index.js` tienen lo siguiente:
 
 ```js
-const db = new Sequelize(
-  "postgres://user:password@localhost:5432/henry_sequelize",
-  {
-    logging: false,
-  }
-);
+const db = new Sequelize('postgres://user:password@localhost:5432/henry_sequelize', {
+  logging: false,
+});
 ```
 
 Deberán reemplazar donde dice `user` y `password` por su usuario y contraseña de Postgres para que la conexión sea exitosa, sino al correr el servidor les arrojará un error informando donde está fallando el intento de conexión. Si por algun motivo al instalar Postgres cambiaron el puerto default tambien tendran que modificar donde dice `5432`.
@@ -37,23 +34,28 @@ Vamos a generar tres modelos:
 
 Va a representar a uno de los personajes que podrías seleccionar del juego y tendrá las siguientes propiedades:
 
-- **code**\*: string (Máximo 5 caracteres) [PK]
-- **name**\*: string (Debe ser único)
-- **age**: integer
-- **race**: enum (Posibles valores: 'Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other')
-- **hp**\*: float
-- **mana**\*: float
-- **date_added**: timestamp without time
+  * __code__*: string (Máximo 5 caracteres) [PK]
+  * __name__*: string (Debe ser único)
+  * __age__: integer
+  * __race__: enum (Posibles valores: 'Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other')
+  * __hp__*: float
+  * __mana__*: float
+  * __date_added__: timestamp without time
 
 En el caso de no setear una raza ("race") por default deberían asignarle "Other" y si no damos valor para "date_added" debería tomar la fecha actual. Adicionalmente queremos quitar los timestamps automáticos de createdAt y updatedAt.
 
 #### Ability
 
-- **name**\*: string
-- **description**: text
-- **mana_cost**\*: float
+  * __name__*: string
+  * __description__: text
+  * __mana_cost__*: float
 
 La combinación "name" + "mana_cost" debe ser única.
+
+#### Role
+
+  * __name__*: string (Dene ser único)
+  * __description__: string
 
 Las propiedades marcadas con asterístico son obligatorias
 
@@ -63,11 +65,10 @@ Van a tener ya los middlewares para cada modelo configurados y el esqueleto de l
 
 #### POST /character
 
-Debe recibir por body los datos del modelo de `Character` y crear una instancia del mismo en la base de datos.
-
-- De no recibir todos los parámetros necesarios debería devolver un status 404 con el mensaje "Falta enviar datos obligatorios"
-- Si alguna validación interna de la base de datos falle debe devolver un status 404 con el mensaje "Error en alguno de los datos provistos"
-- Si todos los datos son provistos debera devolver un status 201 y el objeto del personaje
+Debe recibir por body los datos del modelo de `Character` y crear una instancia del mismo en la base de datos. 
+  * De no recibir todos los parámetros necesarios debería devolver un status 404 con el mensaje "Falta enviar datos obligatorios"
+  * Si alguna validación interna de la base de datos falle debe devolver un status 404 con el mensaje "Error en alguno de los datos provistos"
+  * Si todos los datos son provistos debera devolver un status 201 y el objeto del personaje
 
 #### GET /character
 
@@ -116,10 +117,9 @@ Ahora crearemos un campo virtual para el modelo de Ability que será como un min
 ### Validations
 
 Vamos a agregar algunas validaciones a nivel base de datos:
-
-- **Ability - mana_cost**: el valor debe estar entre 10.0 y 250.0
-- **Character - name**: el valor no puede ser "Henry", "SoyHenry" o "Soy Henry"
-- **Character - code**: similar al name vamos a hacer que no pueda ser "HENRY" pero incluyendo cualquier variación/combinación de mayúsculas y minísculas (Armar un custom validator).
+  * __Ability - mana_cost__: el valor debe estar entre 10.0 y 250.0
+  * __Character - name__: el valor no puede ser "Henry", "SoyHenry" o "Soy Henry"
+  * __Character - code__: similar al name vamos a hacer que no pueda ser "HENRY" pero incluyendo cualquier variación/combinación de mayúsculas y minísculas (Armar un custom validator).
 
 ### Relaciones
 
@@ -132,29 +132,28 @@ Ya tenemos todos los modelos creados y funcionando correctamente pero cada uno p
 Deben asociar los modelos dentro del archivo `index.js` de la carpeta `db`. Para ello primero deberán obtener los modelos desde la instancia de Sequelize creada:
 
 ```js
-const { Character, Ability, Role } = db.models;
+  const { Character, Ability, Role} = db.models;
 ```
 
 Ahora si tienen que usar los métodos `hasOne`, `belongsTo`, `hasMany` o `belongsToMany` según corresponda.
 
-Una vez que hayan completado exitosamente las asociaciones van a tener que descomentar las lineas que se encuentra dentro del `beforeAll` del archivo `character-routes.spec.js` (Lineas 52 a 58):
+Una vez que hayan completado exitosamente las asociaciones van a tener que descomentar las lineas que se encuentra dentro del `beforeAll` del archivo `character-routes.spec.js` (Lineas 52 a 58): 
 
 ```js
-await Promise.all([
-  p1.createRole({ name: "Tank" }),
-  p1.createRole({ name: "Top" }),
-  p2.createRole({ name: "Jungle" }),
-  p3.createRole({ name: "Mid" }),
-  p3.createRole({ name: "Support" }),
-]);
+  await Promise.all([
+    p1.createRole({name: 'Tank'}),
+    p1.createRole({name: 'Top'}),
+    p2.createRole({name: 'Jungle'}),
+    p3.createRole({name: 'Mid'}),
+    p3.createRole({name: 'Support'})
+  ]);
 ```
 
 ### POST /ability
 
-Debe recibir por body los datos del modelo de `Ability` y crear una instancia del mismo en la base de datos.
-
-- De no recibir todos los parámetros necesarios debería devolver un status 404 con el mensaje "Falta enviar datos obligatorios"
-- Si todos los datos son provistos debera devolver un status 201 y el objeto de la habilidad
+Debe recibir por body los datos del modelo de `Ability` y crear una instancia del mismo en la base de datos. 
+  * De no recibir todos los parámetros necesarios debería devolver un status 404 con el mensaje "Falta enviar datos obligatorios"
+  * Si todos los datos son provistos debera devolver un status 201 y el objeto de la habilidad
 
 ### PUT /ability/setCharacter
 
@@ -175,7 +174,7 @@ Similar al enpodint anterior pero ahora queremos poder desde el lado del persona
 }
 ```
 
-Todas estas habilidades aun no existen en la base de datos...
+Todas estas habilidades aun no existen en la base de datos... 
 
 ### GET /characters/roles/:code
 

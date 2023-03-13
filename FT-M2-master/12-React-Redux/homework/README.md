@@ -1,4 +1,4 @@
-º# Redux OMDB APP
+# Redux OMDB APP
 
 En este ejercicio vamos a crear una APP que utilice la API de [OMDB](http://www.omdbapi.com/). Vamos a crear nuestra app utilizando **REACT** y **REDUX**.
 
@@ -168,7 +168,7 @@ Pasamos a explicar un poco que estamos haciendo. `mapStateToProps` recibe como p
 
 ### Dispatch una accion desde nuestro componente
 
-Los siguiente que haremos en nuestro componente `Buscador.js` es agragar la accion `getMovies` pasandole el valor que guardamos en nuestro estado con el valor title en nuestra funcion `handleSubmit` para tener una referencia del valor ingresado en el input o usando el evento `onChange` en el input y guardando el valor en el state del componente.
+Los siguiente que haremos en nuestro componente `Buscador.js` es agregar la accion `getMovies` pasandole el valor que guardamos en nuestro estado con el valor title en nuestra funcion `handleSubmit` para tener una referencia del valor ingresado en el input o usando el evento `onChange` en el input y guardando el valor en el state del componente.
 
 ### Obtener y mostrar nuestro cambio de State
 

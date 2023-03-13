@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos parcticos 1 flexbox</title>
+
+    <style>
+              *,
+                *::after,
+                *::before{
+                    box-sizing: border-box;
+                    margin:0;
+                    padding: 0;
+                }
+
+
+                  
+                body{
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+                main{
+               
+                     flex:1; 
+                }
+                .titulares{
+                    padding: 1rem;
+                    background-color: #222;
+                    color:#EEE;
+                }
+
+                .header{
+                    display: flex;
+                    flex-direction: row;
+                    align-items:center; 
+               
+               
+                }
+
+
+                .hero-image{
+                    min-height: 100vh;
+                     background-image: url("https://placeimg.com/1280/720/animals");
+                    background-repeat: no-repeat;
+                    /* background-color: rgba(0,0,0,.95); */
+                    color:#EEE
+                }
+
+
+                .hero-image div{
+                    min-height: inherit;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    background-color: rgba (0,0,0,.75);
+                }
+
+                .hero-image h1{
+                    font-size: 5vh;
+                }
+                @media screen and (min-width:1024px) {
+                    header{
+                        display: flex;
+                        flex-direction: row;
+                     justify-content: space-between; 
+                    }
+                    .menu ul{
+                        display: flex;
+                    }
+                }
+                .menu ul{
+                    list-style-type: none;
+                }
+
+                .menu li{
+                    padding: 1rem;
+                }
+
+
+        .flex-container{
+            display: flex;
+            align-items: center;
+        }
+             
+        .flex-item{
+      /*       display: flex; */
+      flex:1 1 50%
+        }
+
+
+
+    .flex-order1{
+        order:1;
+    }
+
+   .flex-row-reverse{
+    flex-direction: row-reverse;
+   }       
+   
+   
+
+
+   .flex-responsive{
+    display: flex;
+    flex-flow: row wrap;
+   }
+
+   .flex-responsive-item{
+    border:thin solid green;
+    	    flex:1 1 200px
+   }
+
+    </style>
+
+</head>
+<body>
+    <header class="titulares header">
+        <!-- <h2  >Header</h2> -->
+        <div class="logo">Logo</div>
+        <nav class="menu">
+            <ul>
+                <li><a href="">seccion1</a></li>
+                <li><a href="">seccion2</a></li>
+                <li><a href="">seccion3</a></li>
+                <li><a href="">seccion4</a></li>
+            </ul>
+        </nav>
+    </header>  
+        <main >
+            <h2>Contenido</h2>
+
+            <article class="hero-image">
+              <div>  <h1>flexBox fuckyn coll</h1></div>
+            </article>
+
+            <section class="flex-container flex-row-reverse">
+                 <!--  <article class="flex-item flex-order1"> -->
+                <article class="flex-item">
+                    <h2>Titulo</h2>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ab, praesentium impedit porro aspernatur earum aut libero, veniam quisquam rerum officiis tenetur repudiandae et quaerat eveniet debitis reprehenderit omnis ea!
+                    </p>
+
+                </article>
+
+                <img src="https://placeimg.com/400/400/nature" alt="">
+            </section>
+            <section class="flex-container  ">
+              
+                <article class="flex-item  ">
+                    <h2>Titulo</h2>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ab, praesentium impedit porro aspernatur earum aut libero, veniam quisquam rerum officiis tenetur repudiandae et quaerat eveniet debitis reprehenderit omnis ea!
+                    </p>
+
+                </article>
+
+                <img src="https://placeimg.com/400/400/people" alt="">
+            </section>
+
+
+            <section class="flex-responsive">
+
+                <h2>Responsive sin media query con flexbox</h2>
+                <article class="flex-responsive-item">item Rsponsive 1</article>
+                <article class="flex-responsive-item">item Rsponsive 2</article>
+                <article class="flex-responsive-item">item Rsponsive 3</article>
+                <article class="flex-responsive-item">item Rsponsive 4</article>
+                <article class="flex-responsive-item">item Rsponsive 5</article>
+                <article class="flex-responsive-item">item Rsponsive 6</article>
+                <article class="flex-responsive-item">item Rsponsive 7</article>
+                <article class="flex-responsive-item">item Rsponsive 8</article>
+                <article class="flex-responsive-item">item Rsponsive 9</article>
+                <article class="flex-responsive-item">item Rsponsive 10</article>
+                <article class="flex-responsive-item">item Rsponsive 11</article>
+                <article class="flex-responsive-item">item Rsponsive 12</article>
+                <article class="flex-responsive-item">item Rsponsive 13</article>
+                <article class="flex-responsive-item">item Rsponsive 14</article>
+                <article class="flex-responsive-item">item Rsponsive 15</article>
+                <article class="flex-responsive-item">item Rsponsive 16</article>
+                <article class="flex-responsive-item">item Rsponsive 17</article>
+                <article class="flex-responsive-item">item Rsponsive 18</article>
+                <article class="flex-responsive-item">item Rsponsive 19</article>
+            </section>
+     
+        </main>
+        <footer class="titulares"> footer</footer>
+
+</body>
+</html>

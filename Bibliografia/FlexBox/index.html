@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiendo flex Box con csstrick</title>
+
+    <style>
+                *,
+                *::after,
+                *::before{
+                    box-sizing: border-box;
+                }
+
+                .container{
+
+                    /* 1 parte  PADRE*/
+                    background-color:blanchedalmond;
+                    padding: 12px;
+                    height: 30vh;
+                    display:flex;/* quedan en filas */
+                    flex-direction:row;
+                    flex-wrap: wrap; 
+                      /*es un shortcut de flex-direction y flex-wrap
+                     flex-flow: row wrap; */
+                   
+                  
+                   
+                    margin:10px;
+
+
+                    /* 2 parte  PADRE*/
+                    justify-content:center;
+
+
+
+
+                        /* funciona por vcada linea que hay --> wrap*/
+                    align-items:stretch; 
+
+                    
+                     /* funciona por  que hay */
+                     align-content:stretch;
+                   
+                }
+
+
+
+                   
+
+               
+                .item{
+                  
+
+                    /* 1 parte PADRE */
+                    background-color: aquamarine;
+                /*     width: 20%;
+                    height: 20%; */
+                    border: medium solid coral;
+                     
+
+                    /* 3 parte HIJOS */
+
+                    /* flex-grow capacidad de crecimeinto - valorpor defecto es 1
+                    flex-growestablecido en 1, el espacio restante SOBRANTE en el contenedor se distribuirá por igual 
+                     a todos los niños. Si uno de los hijos tiene un valor de 2, ese hijo ocuparía el doble de 
+                     espacio que cualquiera de los otros (o lo intentará, al menos).
+                    
+                    */ flex-grow: 0;
+
+                    /* 
+                    flex-shrink
+                    Esto define la capacidad de que un elemento flexible se encoja si es necesario.
+                    */flex-shrink: 0;
+
+
+                     /* Esto define el tamaño predeterminado de un elemento antes de que se distribuya el espacio restante.
+                     Puede ser una longitud (por ejemplo, 20 %, 5 rem, etc.) */
+                    flex-basis: auto; 
+                    flex-basis: 100px; 
+
+                    /* existe flex para simplificar las tres pripiedades  */
+                    
+                    flex:1 1 100px;
+
+
+
+           
+                   
+ 
+                }
+
+                /* accedo al 2 elemento del item */
+                .item:nth-child(2),.item:nth-child(15){
+                        /* font-size: 250%; */
+
+                        flex-grow: 1; /* absorbe el espacio del padre y lo cuadruplica */
+
+                                            /* 
+                      De forma predeterminada, los elementos flexibles se presentan en el orden de origen. Sin embargo, 
+                      la orderpropiedad controla el orden en que aparecen en el contenedor flexible
+                    */
+                    order: 3;
+
+                         /* 
+                Esto permite anular la alineación predeterminada (o la especificada por align-items) 
+                para elementos flexibles individuales.
+                */ align-self: center;
+
+                } 
+
+
+
+                .texto{
+                text-align: center;
+                background-color: black;
+                color: white;
+                padding: 20px;
+                margin-top: 2rem;
+                text-transform: capitalize;
+                text-decoration: underline;
+                text-shadow: 1rem;
+
+                }
+
+    </style>
+
+</head>
+<body>
+      <h2 class="texto">Aprendiendo a flex box</h2>
+
+    <section class="container">
+
+        <article class="item">Flex 1</article>
+        <article class="item">Flex 2</article>
+        <article class="item">Flex 3</article>
+
+    </section>
+    <section class="container">
+
+        <article class="item">Flex 1</article>
+        <article class="item">Flex 2</article>
+        <article class="item">Flex 3</article>
+
+    </section>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <section class="container">
+
+         <article class="item">Flex1</article>
+         <article class="item">Flex2</article>
+         <article class="item">Flex3</article>
+         <article class="item">Flex4</article>
+         <article class="item">Flex5</article>
+         <article class="item">Flex6</article>
+         <article class="item">Flex7</article>
+         <article class="item">Flex8</article>
+         <article class="item">Flex9</article>
+         <article class="item">Flex10</article>
+         <article class="item">Flex11</article>
+         <article class="item">Flex12</article>
+         <article class="item">Flex13</article>
+         <article class="item">Flex14</article>
+         <article class="item">Flex15</article>
+         <article class="item">Flex16</article>
+         <article class="item">Flex17</article>
+         <article class="item">Flex18</article>
+         <article class="item">Flex19</article>
+
+    </section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+ .navBarConteiner{
+    
+     background-color: black; 
+    display:inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content:space-between;
+    text-align: justify;
+    width:100vw;
+}
+
+.navContent{
+    justify-content: space-around ;
+
+    display: inline-flex;
+    flex-direction: column;
+    float: right;
+ 
+   
+}
+
+
+.navLink{
+    color: white;
+    text-decoration: none;
+    font-size: 1rem ;
+}
+
+
+.conteinerMerch{
+    color: #ffffff;
+    text-align: center;
+    margin-left: 3%;
+    width: 25%;
+}
+
+.countries{
+    color: #ffffff;
+    margin-left: 20%;
+    font-size: 3.2rem;
+    
+}
+.byEsteban{
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-left:20%;
+    margin-top: -2%;
+} 
+
+
+.navSearchBar{
+    display: flex;
+    margin-right: 100%;
+}

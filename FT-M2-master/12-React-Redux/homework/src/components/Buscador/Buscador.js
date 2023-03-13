@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Buscador.css";
-
 import {
   getMovies,
   getMovieDetail,
@@ -19,14 +18,22 @@ export class Buscador extends Component {
   handleChange(event) {
     this.setState({ title: event.target.value });
   }
+
+  //MENEJADOR DEL BOTON ENVIAR
   handleSubmit(event) {
     event.preventDefault();
-    //esto agrego
-    this.props.getMovies(this.state.title);
+    // como es clases uso el this.props
+    this.props.Movies(this.state.title);
   }
-  //evento click
+
+  //MENEJADOR DE ON-CLIKC
+
   handlerClick(movie) {
     this.props.addMovieFavorite(movie);
+  }
+
+  handlerMoviesFavorites(imdbID) {
+    return this.props.favorites.find((fav) => fav.id === imdbID) ? true : false;
   }
 
   render() {
@@ -49,39 +56,61 @@ export class Buscador extends Component {
           </div>
           <button type="submit">BUSCAR</button>
         </form>
-        <ul>
-          {
-            /* Aqui tienes que escribir tu codigo para mostrar la lista de peliculas */
 
-            this.props.movies.map((movie) => {
-              return (
-                <li>
-                  <Link to={`/movie/${movie.imdbID}`}>
-                    <span>{movie.Title}</span>
-                  </Link>
-                  <button onClick={this.handlerClick({ id: movie.imdbID })}>
-                    Favorite💥
-                  </button>
-                </li>
-              );
-            })
-          }
+        {/* 
+        
+         
+        
+        
+        <Link to={`/movie/${movie.imdbID}`}>
+                <span>{movie.Title}</span>
+              </Link> */}
+        <ul>
+          {this.props.movies.map((movie) => {
+            return (
+              <li key={movie.imdbID}>
+                {/* aca navego a la ruta del detalle */}
+
+                <Link to={`/movie/${movie.imdbID}`}>
+                  {" "}
+                  <span>{movie.Title}</span>
+                </Link>
+                <button
+                  onClick={() =>
+                    this.props.addFavorite({
+                      title: movie.Title,
+                      id: movie.imdbID,
+                    })
+                  }
+                >
+                  {this.handlerMoviesFavorites(movie.imdbID) ? "❤" : "🤍"}
+                </button>
+
+                <br></br>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
   }
+
+  //============
 }
 
-const mapStateToProps = (state) => {
+//carga los state del reducer
+function mapStateToProps(state) {
   return {
-    movies: state.movies,
+    movies: state.moviesLoaded,
+    favorites: state.moviesFavorites,
   };
-};
-
-/* const mapDispatchToProps=(dispatch)=>{
-  getMovies:titulo=>dispatch(getMovies(titulo)),
-  getMovieDetail:id=>dispatch(getMovieDetail(id)),
-
 }
- */
-export default Buscador;
+
+function mapDispatchToProps(dispatch) {
+  return {
+    Movies: (title) => dispatch(getMovies(title)),
+    addFavorite: (movie) => dispatch(addMovieFavorite(movie)),
+    movieDetail: (id) => dispatch(getMovieDetail(id)),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Buscador);

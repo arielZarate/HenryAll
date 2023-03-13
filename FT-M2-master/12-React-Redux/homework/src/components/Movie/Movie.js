@@ -1,39 +1,48 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getMovieDetail } from "../../actions/index";
 
 import "./Movie.css";
 
 class Movie extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
 
+  //aca no usamos useEffect
   componentDidMount() {
-    this.props.getMovieDetail();
+    //le debo pasar el id por params
+    console.log(this.props); //para ver que llega
+    this.props.getMoviesDetail(this.props.match.params.id);
   }
+
   render() {
     return (
-      <div className="movie-detail">
-        <h1>{this.props.movieDetail.Title}</h1>
-        <p>{this.props.movieDetail.Year}</p>
-        <img src={this.props.movieDetail.Poster} alt="peli" />
-        <p>{this.props.movieDetail.Plot}</p>
-      </div>
+      <Fragment>
+        <div className="movie-detail">Detalle de la pelicula</div>;
+        <h1>{this.props.MovieDetail.Title}</h1>
+        <br></br>
+        <img src={this.props.MovieDetail.Poster} />
+        <h4>{this.props.MovieDetail.Genre}</h4>
+        <h4>{this.props.MovieDetail.Director}</h4>
+        <h4>{this.props.MovieDetail.Country}</h4>
+        <h4>{this.props.MovieDetail.Released}</h4>
+      </Fragment>
     );
   }
 }
 
-//agregando code
+function mapStateToProps(state) {
+  return {
+    MovieDetail: state.movieDetail,
+  };
+}
 
-const mapStateToProps = (state) => {
-  return { movieDetails: state.MovieDetail };
-};
 const mapDispatchToProps = (dispatch) => {
-  return;
-  {
-    movieDetails: (id) => dispatch(movieDetail(id));
-  }
+  return {
+    getMoviesDetail: (id) => dispatch(getMovieDetail(id)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

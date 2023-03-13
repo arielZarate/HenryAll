@@ -1,45 +1,55 @@
 import {
   ADD_MOVIE_FAVORITE,
   GET_MOVIES,
+  GET_MOVIES_DETAIL,
   REMOVE_MOVIE_FAVORITE,
-  GET_MOVIES_DETAILS,
-} from "../actions/action-types";
+} from "../actions-types";
 
 const initialState = {
-  movies: [],
-  movies_favorites: [],
-  movies_details: [],
+  moviesFavorites: [],
+  moviesLoaded: [],
+  movieDetail: {},
 };
 
-export default function rootReducer(state = initialState, action) {
+/* 
+Tienes que crear los 4 reducers para las 4 acciones que creamos anteriormente que son:
+getMovies, getMovieDetail, removeMovieFavorite,addMovieFavorite
+
+*/
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MOVIES:
       return {
         ...state,
-
-        //el Search es una propiedad de la api
-        movies: action.payload.Search,
+        moviesLoaded: action.payload.Search,
       };
 
-    case ADD_MOVIE_FAVORITE:
+    case GET_MOVIES_DETAIL:
       return {
         ...state,
-        //creo un nuevo array porque son datos dsintintos
-        movies_favorites: [...state.movies_favorites, action.payload],
+        movieDetail: action.payload,
       };
+    case ADD_MOVIE_FAVORITE:
+      return {
+        ...JSON.parse(JSON.stringify(state)),
+        moviesFavorites: [
+          ...JSON.parse(JSON.stringify(state.moviesFavorites)),
+          action.payload,
+        ], //
+        //state.moviesFavorites.concat(action.payload),
+      };
+
     case REMOVE_MOVIE_FAVORITE:
       return {
         ...state,
-        movies_favorites: state.movies_favorites.filter(
+        moviesFavorites: state.moviesFavorites.filter(
           (movie) => movie.id !== action.payload
         ),
       };
 
-    case GET_MOVIES_DETAILS:
-      return { ...state, movies_details: action.payload };
-
-    //DEFAULT
     default:
-      return { ...state };
+      return state;
   }
-}
+};
+
+export default rootReducer;
